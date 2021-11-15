@@ -1,0 +1,18 @@
+unit uInscricaoFiscal;
+
+interface
+
+type
+  CPF = interface;
+
+  CPF = interface(CPF)
+    { Methods & Properties }
+    function ValidarCPF: boolean;
+
+
+    property Versao: WideString read Get_Versao write Set_Versao;
+  end;
+
+implementation
+
+end.

@@ -1,0 +1,195 @@
+unit CadUsuario;
+
+{
+Rafael Hassegawa - Teste prático
+rafaelmch@gmail.com
+(31)99886-6863
+}
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.DBCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  TfrmCadUsuario = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    btnGravar: TButton;
+    btnNovo: TButton;
+    DBNavigator1: TDBNavigator;
+    lblRegistros: TLabel;
+    qUsuarios: TFDQuery;
+    dsqUsuarios: TDataSource;
+    qUsuariosID_USUARIO: TIntegerField;
+    qUsuariosNOME: TStringField;
+    qUsuariosLOGIN: TStringField;
+    qUsuariosSENHA: TStringField;
+    qUsuariosATIVO: TStringField;
+    Label1: TLabel;
+    edID: TDBEdit;
+    Label2: TLabel;
+    edNome: TDBEdit;
+    Label3: TLabel;
+    edLogin: TDBEdit;
+    Label4: TLabel;
+    edSenha: TDBEdit;
+    Label5: TLabel;
+    edAtivo: TDBEdit;
+    btnCancelar: TButton;
+    Label6: TLabel;
+    DBEdit1: TDBEdit;
+    Label7: TLabel;
+    DBEdit2: TDBEdit;
+    Label8: TLabel;
+    DBEdit3: TDBEdit;
+    Label9: TLabel;
+    DBEdit4: TDBEdit;
+    Label10: TLabel;
+    DBEdit5: TDBEdit;
+    procedure btnGravarClick(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure DBNavigator1Click(Sender: TObject; Button: TNavigateBtn);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+    function validarDados() : boolean;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCadUsuario: TfrmCadUsuario;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  Main,
+  uDados,
+  uFuncoes;
+
+procedure TfrmCadUsuario.btnNovoClick(Sender: TObject);
+var
+  ls_sql : String;
+begin
+  qUsuarios.Append;
+  lblRegistros.Caption := '';
+
+  ls_sql := 'SELECT MAX(ID_USUARIO) + 1 AS ID_NOVO FROM USUARIOS';
+  with frmDados.qGeral do
+  begin
+    Close;
+    Sql.Clear;
+    Sql.Add(ls_sql);
+    Open;
+  end;
+  edID.Text := frmDados.qGeral.FieldByName('ID_NOVO').AsString;
+end;
+
+procedure TfrmCadUsuario.DBNavigator1Click(Sender: TObject;
+  Button: TNavigateBtn);
+begin
+  lblRegistros.Caption := atualizarRegistrosCadastro('USU',qUsuarios);
+end;
+
+procedure TfrmCadUsuario.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  qUsuarios.Close;
+  frmCadUsuario := nil;
+  Action := caFree;
+end;
+
+procedure TfrmCadUsuario.FormCreate(Sender: TObject);
+begin
+  qUsuarios.Active := true;
+  qUsuarios.Open;
+
+  frmDados.qUsuarios.Active := true;
+  frmDados.qUsuarios.Open;
+end;
+
+procedure TfrmCadUsuario.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  //pular campo com o ENTER
+  if key = #13 then
+  begin
+    Key:= #0;
+    Perform(Wm_NextDlgCtl,0,0);
+  end;
+end;
+
+procedure TfrmCadUsuario.FormShow(Sender: TObject);
+begin
+  lblRegistros.Caption := atualizarRegistrosCadastro('USU',qUsuarios);
+end;
+
+procedure TfrmCadUsuario.btnCancelarClick(Sender: TObject);
+begin
+  //cancelar
+  qUsuarios.Cancel;
+end;
+
+procedure TfrmCadUsuario.btnGravarClick(Sender: TObject);
+begin
+  //validar dados
+  if validarDados() = false then
+    Exit;
+
+  if qUsuarios.State in [dsEdit, dsInsert] then
+    qUsuarios.Post
+  else
+    ShowMessage('Atenção! Tela não está em modo de inserção/edição!');
+
+  lblRegistros.Caption := atualizarRegistrosCadastro('USU',qUsuarios);
+end;
+
+function TfrmCadUsuario.validarDados() : boolean;
+begin
+  result := true;
+
+  if trim(edNome.Text) = '' then
+  begin
+    ShowMessage('Atenção! Preencha o nome do usuário!');
+    edNome.SetFocus;
+    result := false;
+    Exit;
+  end;
+
+  if trim(edLogin.Text) = '' then
+  begin
+    ShowMessage('Atenção! Preencha o login do usuário!');
+    edLogin.SetFocus;
+    result := false;
+    Exit;
+  end;
+
+  if trim(edSenha.Text) = '' then
+  begin
+    ShowMessage('Atenção! Preencha a senha do usuário!');
+    edSenha.SetFocus;
+    result := false;
+    Exit;
+  end;
+
+  if trim(edAtivo.Text) = '' then
+  begin
+    ShowMessage('Atenção! Informe se o usuário está ativo [S] ou inativo [N]!');
+    edAtivo.SetFocus;
+    result := false;
+    Exit;
+  end;
+
+end;
+
+end.

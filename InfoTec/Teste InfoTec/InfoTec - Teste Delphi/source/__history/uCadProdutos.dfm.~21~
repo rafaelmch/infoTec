@@ -1,0 +1,225 @@
+object frmCadProdutos: TfrmCadProdutos
+  Left = 0
+  Top = 0
+  Caption = 'Cadastro de Clientes'
+  ClientHeight = 189
+  ClientWidth = 704
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 148
+    Width = 704
+    Height = 41
+    Align = alBottom
+    BevelInner = bvLowered
+    Caption = 'Panel1'
+    ShowCaption = False
+    TabOrder = 0
+    ExplicitTop = 451
+    object lblRegistros: TLabel
+      Left = 219
+      Top = 14
+      Width = 55
+      Height = 13
+      Caption = 'lblRegistros'
+    end
+    object dbNavegador: TDBNavigator
+      Left = 5
+      Top = 6
+      Width = 120
+      Height = 25
+      DataSource = dsqProdutos
+      VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbDelete, nbEdit]
+      TabOrder = 0
+    end
+    object btnNovo: TButton
+      Left = 131
+      Top = 8
+      Width = 75
+      Height = 25
+      Caption = 'Novo'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+      OnClick = btnNovoClick
+    end
+    object btnCancelar: TButton
+      Left = 624
+      Top = 9
+      Width = 75
+      Height = 25
+      Caption = 'Cancelar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
+      OnClick = btnCancelarClick
+    end
+    object btnSalvar: TButton
+      Left = 546
+      Top = 9
+      Width = 75
+      Height = 25
+      Caption = 'Gravar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 3
+      OnClick = btnSalvarClick
+    end
+    object btnEnviarEmail: TButton
+      Left = 355
+      Top = 9
+      Width = 69
+      Height = 25
+      Caption = 'Enviar @'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 4
+      OnClick = btnEnviarEmailClick
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 0
+    Width = 704
+    Height = 148
+    Align = alClient
+    TabOrder = 1
+    ExplicitTop = 2
+    ExplicitHeight = 149
+    object Label15: TLabel
+      Left = 25
+      Top = 16
+      Width = 86
+      Height = 13
+      Caption = 'C'#243'digo Produto'
+      FocusControl = dbId
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label16: TLabel
+      Left = 25
+      Top = 62
+      Width = 55
+      Height = 13
+      Caption = 'Descri'#231#227'o'
+      FocusControl = dbDescricao
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label17: TLabel
+      Left = 444
+      Top = 64
+      Width = 80
+      Height = 13
+      Caption = 'Pre'#231'o Unit'#225'rio'
+      FocusControl = dbPrecoUnit
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object dbId: TDBEdit
+      Left = 25
+      Top = 35
+      Width = 134
+      Height = 21
+      DataField = 'ID_PRODUTO'
+      DataSource = dsqProdutos
+      TabOrder = 0
+    end
+    object dbDescricao: TDBEdit
+      Left = 23
+      Top = 80
+      Width = 400
+      Height = 21
+      DataField = 'DESCRICAO'
+      DataSource = dsqProdutos
+      TabOrder = 1
+    end
+    object dbPrecoUnit: TDBEdit
+      Left = 444
+      Top = 80
+      Width = 134
+      Height = 21
+      DataField = 'PRECO_UNIT'
+      DataSource = dsqProdutos
+      TabOrder = 2
+    end
+  end
+  object qProdutos: TFDQuery
+    IndexFieldNames = 'ID_PRODUTO'
+    Connection = frmMain.qConexao
+    SQL.Strings = (
+      'SELECT *'
+      'FROM PRODUTOS')
+    Left = 592
+    Top = 24
+    object qProdutosID_PRODUTO: TIntegerField
+      FieldName = 'ID_PRODUTO'
+      Origin = 'ID_PRODUTO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qProdutosDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Required = True
+      Size = 120
+    end
+    object qProdutosPRECO_UNIT: TSingleField
+      FieldName = 'PRECO_UNIT'
+      Origin = 'PRECO_UNIT'
+    end
+    object qProdutosDISPONIVEL: TStringField
+      FieldName = 'DISPONIVEL'
+      Origin = 'DISPONIVEL'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object dsqProdutos: TDataSource
+    DataSet = qProdutos
+    Left = 664
+    Top = 16
+  end
+end

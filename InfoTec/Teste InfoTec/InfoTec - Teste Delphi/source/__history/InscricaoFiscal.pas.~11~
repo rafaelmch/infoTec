@@ -1,0 +1,156 @@
+unit InscricaoFiscal;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils;
+
+type
+
+  /// <summary>
+  /// Classe base para validação da inscrição fiscal: CPF e CNPJ
+  /// </summary>
+  TInscricaoFiscal = class abstract(TObject)
+  public
+    function DocumentoValido(const ADocumento: string): Boolean; virtual; abstract;
+  end;
+
+  TCNPJ = class(TInscricaoFiscal)
+  public
+    function DocumentoValido(const ADocumento: string): Boolean; override;
+  end;
+
+  TCPF = class(TInscricaoFiscal)
+  public
+    function DocumentoValido(const ADocumento: string): Boolean; override;
+  end;
+
+implementation
+
+{ TCNPJ }
+
+function TCNPJ.DocumentoValido(const ADocumento: string): Boolean;
+var
+  dig13, dig14: string;
+  sm, i, r, peso: integer;
+begin
+  Result := True;
+
+  if ((ADocumento = '00000000000000') or (ADocumento = '11111111111111') or
+      (ADocumento = '22222222222222') or (ADocumento = '33333333333333') or
+      (ADocumento = '44444444444444') or (ADocumento = '55555555555555') or
+      (ADocumento = '66666666666666') or (ADocumento = '77777777777777') or
+      (ADocumento = '88888888888888') or (ADocumento = '99999999999999') or
+      (length(ADocumento) <> 14)) then
+  begin
+    result := false;
+    exit;
+  end;
+
+// "try" - protege o código para eventuais erros de conversão de tipo através da função "StrToInt"
+  try
+{ *-- Cálculo do 1o. Digito Verificador --* }
+    sm := 0;
+    peso := 2;
+    for i := 12 downto 1 do
+    begin
+// StrToInt converte o i-ésimo caractere do CNPJ em um número
+      sm := sm + (StrToInt(ADocumento[i]) * peso);
+      peso := peso + 1;
+      if (peso = 10)
+         then peso := 2;
+    end;
+    r := sm mod 11;
+    if ((r = 0) or (r = 1))
+       then dig13 := '0'
+    else str((11-r):1, dig13);
+
+    { *-- Cálculo do 2o. Digito Verificador --* }
+    sm := 0;
+    peso := 2;
+    for i := 13 downto 1 do
+    begin
+      sm := sm + (StrToInt(ADocumento[i]) * peso);
+      peso := peso + 1;
+      if (peso = 10)
+         then peso := 2;
+    end;
+    r := sm mod 11;
+    if ((r = 0) or (r = 1))
+       then dig14 := '0'
+    else str((11-r):1, dig14);
+
+    { Verifica se os digitos calculados conferem com os digitos informados. }
+    if ((dig13 = CNPJ[13]) and (dig14 = CNPJ[14])) then
+      result := true
+    else
+      result := false;
+  except
+    result := false
+  end;
+
+end;
+
+{ TCPF }
+
+function TCPF.DocumentoValido(const ADocumento: string): Boolean;
+var
+  dig10, dig11: string;
+  s, i, r, peso: integer;
+begin
+  Result := True;
+
+  // length - retorna o tamanho da string (ADocumento é um número formado por 11 dígitos)
+  if ((ADocumento = '00000000000') or (ADocumento = '11111111111') or
+      (ADocumento = '22222222222') or (ADocumento = '33333333333') or
+      (ADocumento = '44444444444') or (ADocumento = '55555555555') or
+      (ADocumento = '66666666666') or (ADocumento = '77777777777') or
+      (ADocumento = '88888888888') or (ADocumento = '99999999999') or
+      (length(ADocumento) <> 11))
+  then
+  begin
+    result := false;
+    exit;
+  end;
+
+  try
+    { *-- Cálculo do 1o. Digito Verificador --* }
+    s := 0;
+    peso := 10;
+    for i := 1 to 9 do
+    begin
+      s := s + (StrToInt(ADocumento[i]) * peso);
+      peso := peso - 1;
+    end;
+    r := 11 - (s mod 11);
+    if ((r = 10) or (r = 11))
+       then dig10 := '0'
+    else str(r:1, dig10);
+
+    { *-- Cálculo do 2o. Digito Verificador --* }
+    s := 0;
+    peso := 11;
+    for i := 1 to 10 do
+    begin
+      s := s + (StrToInt(ADocumento[i]) * peso);
+      peso := peso - 1;
+    end;
+    r := 11 - (s mod 11);
+    if ((r = 10) or (r = 11))
+       then dig11 := '0'
+    else str(r:1, dig11);
+
+    { Verifica se os digitos calculados conferem com os digitos informados. }
+    if ((dig10 = ADocumento[10]) and (dig11 = ADocumento[11])) then
+      result := true
+    else
+      result := false;
+  except
+    result := false
+  end;
+
+end;
+
+end.

@@ -1,0 +1,23 @@
+unit uInscricaoFiscal;
+
+interface
+
+type
+  CPF = interface;
+
+  CPF = interface(CPF)
+    ['{37D1BD8E-62D5-4310-BD9F-02513EFBB347}']
+    { Property Accessors }
+    function Get_Versao: WideString;
+    function Get_InfDPEC: IXMLInfDPEC;
+    function Get_Signature: IXMLSignatureType;
+    procedure Set_Versao(Value: WideString);
+    { Methods & Properties }
+    property Versao: WideString read Get_Versao write Set_Versao;
+    property InfDPEC: IXMLInfDPEC read Get_InfDPEC;
+    property Signature: IXMLSignatureType read Get_Signature;
+  end;
+
+implementation
+
+end.

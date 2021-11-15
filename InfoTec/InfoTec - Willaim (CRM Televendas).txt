@@ -1,0 +1,9 @@
+InfoTec
+[28/10/2021]
+
+William
+
+- Delphi 7 & 10 (importadores)
+- MySql
+- General Motors, Tramontina, em torno de 40 clientes
+- Estão migrando pra versão web

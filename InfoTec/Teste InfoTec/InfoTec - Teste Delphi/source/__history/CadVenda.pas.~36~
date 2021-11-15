@@ -1,0 +1,117 @@
+unit CadVenda;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask,
+  Vcl.ExtCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfrmRegistroVendas = class(TForm)
+    Panel3: TPanel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Panel1: TPanel;
+    lblRegistros: TLabel;
+    dbNavegador: TDBNavigator;
+    btnNovo: TButton;
+    btnCancelar: TButton;
+    btnSalvar: TButton;
+    btnEnviarEmail: TButton;
+    qVendas: TFDQuery;
+    dsqVendas: TDataSource;
+    qVendasID_VENDA: TIntegerField;
+    qVendasVALOR_TOTAL: TSingleField;
+    qVendasDT_EMISSAO: TDateField;
+    qVendasDT_ENTREGA: TDateField;
+    dbIdVenda: TDBEdit;
+    dbValorTotal: TDBEdit;
+    Label3: TLabel;
+    dbDtEmissao: TDBEdit;
+    dbDtEntrega: TDBEdit;
+    qItemVenda: TFDQuery;
+    dsqItemVenda: TDataSource;
+    DBGrid1: TDBGrid;
+    procedure dbNavegadorClick(Sender: TObject; Button: TNavigateBtn);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+    procedure carregarItensVenda();
+  public
+    { Public declarations }
+  end;
+
+var
+  frmRegistroVendas: TfrmRegistroVendas;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  Main,
+  uDados;
+
+procedure TfrmRegistroVendas.dbNavegadorClick(Sender: TObject; Button: TNavigateBtn);
+var
+  BtnName, ls_Sql : string;
+begin
+  case Button of
+    nbFirst  : BtnName := 'nbFirst';
+    nbPrior  : BtnName := 'nbPrior';
+    nbNext   : BtnName := 'nbNext';
+    nbLast   : BtnName := 'nbLast';
+    nbInsert : BtnName := 'nbInsert';
+    nbDelete : BtnName := 'nbDelete';
+    nbEdit   : BtnName := 'nbEdit';
+    nbPost   : BtnName := 'nbPost';
+    nbCancel : BtnName := 'nbCancel';
+    nbRefresh: BtnName := 'nbRefresh';
+  end;
+  MessageDlg(BtnName + ' button clicked.', mtInformation, [mbOK], 0);
+
+      ls_sql := 'SELECT * FROM ITEMVENDA ' +
+                'WHERE ID_VENDA = ' + TRIM(dbIdVenda.Text);
+
+      with qItemVenda do
+      begin
+        Close;
+        Sql.Clear;
+        Sql.Add(ls_sql);
+        Open;
+      end;
+end;
+
+procedure TfrmRegistroVendas.FormCreate(Sender: TObject);
+begin
+  qVendas.Open;
+end;
+
+procedure TfrmRegistroVendas.FormShow(Sender: TObject);
+begin
+  carregarItensVenda();
+end;
+
+procedure TfrmRegistroVendas.carregarItensVenda();
+var
+  ls_sql : String;
+begin
+  ls_sql := 'SELECT * FROM ITEMVENDA ' +
+            'WHERE ID_VENDA = "' + TRIM(dbIdVenda.Text) + '"';
+
+  with qItemVenda do
+  begin
+    Close;
+    Sql.Clear;
+    Sql.Add(ls_sql);
+    Open;
+  end;
+end;
+
+end.

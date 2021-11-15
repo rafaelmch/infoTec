@@ -1,0 +1,23 @@
+- Tabela Produtos
+
+ID Integer [PK]
+Descricao VarChar
+PrecoVenda
+Disponivel
+
+- Tabela Vendas
+
+IdVenda Integer [PK]
+ValorTotal
+DataEmissao
+DataEntrega
+
+- Tabela ItensVenda
+
+IdItemVenda [PK]
+IdVenda [FK]
+Quant
+PrecoUnit
+ValorTotal
+
+

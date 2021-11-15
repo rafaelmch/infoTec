@@ -1,0 +1,15 @@
+unit uInscricaoFiscal;
+
+interface
+
+type
+  CPF = interface;
+
+  CPF = interface(CPF)
+    { Methods & Properties }
+    function ValidarCPF: CPF;
+  end;
+
+implementation
+
+end.

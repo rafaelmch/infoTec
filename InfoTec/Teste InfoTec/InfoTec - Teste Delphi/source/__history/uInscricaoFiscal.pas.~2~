@@ -1,0 +1,10 @@
+unit uInscricaoFiscal;
+
+interface
+
+type
+  CPF = interface;
+
+implementation
+
+end.

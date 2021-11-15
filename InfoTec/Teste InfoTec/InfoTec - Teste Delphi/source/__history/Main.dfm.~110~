@@ -1,0 +1,316 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  Caption = 'Hassegawa Products'
+  ClientHeight = 732
+  ClientWidth = 1085
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -16
+  Font.Name = 'Segoe UI Light'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poDesigned
+  WindowState = wsMaximized
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 21
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1085
+    Height = 81
+    Align = alTop
+    BevelInner = bvLowered
+    Caption = 'Panel1'
+    Color = clTeal
+    ParentBackground = False
+    ShowCaption = False
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 8
+      Top = 8
+      Width = 213
+      Height = 30
+      Caption = 'Hassegawa Products'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI Black'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Panel4: TPanel
+      Left = 898
+      Top = 2
+      Width = 185
+      Height = 77
+      Align = alRight
+      Caption = 'Panel4'
+      TabOrder = 0
+      object imgHassegawa: TImage
+        Left = 1
+        Top = 1
+        Width = 183
+        Height = 75
+        Align = alClient
+        AutoSize = True
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000BF0000
+          004C08060000003CEC66B1000000017352474200AECE1CE90000000467414D41
+          0000B18F0BFC6105000000097048597300000EC400000EC401952B0E1B000004
+          BD4944415478DAED9A3196EA201486AF7BD1E61D571057E0D858D94E174B6DEC
+          2CED6C623976B656D38CAE405760A77BF111279A1020218073F4DCFF2B67B840
+          2E5F8020ADAB800060480BF203AE407EC016C80FD802F9015B203F600BE4076C
+          81FC802D901FB005F203B6407EC016C80FD802F9015B203F600BE4076C81FC80
+          2D901FB005F203B6407EC016C80FD802F9015B203F600BE4076C81FC802D901F
+          B005F203B6407EC016C80FD8F21CF9F7636A7DACA53FC5BB2B7DF51DCB3D8AB7
+          A8543C8DA0DDF58B0C21BF5CF6B45A2E687B3AD2F158FC474451D4A5F96646FD
+          763B58EC65D5A3CEF448D644099D0F13527B7011CDFFD072B1A593685CAEF1B7
+          FDD17C46937EBBB609FBDC5D68D5EB50B1FB5172A6C3A46DFC7FB9FFEAF3EBC7
+          C8793C03F13EF25F56D4EB4C49A754D50B632B6214EFE850AAC4353688FC15CF
+          ABE900ED0E15C234CC9D22A578BEEBBD90B6AE8892F381EEEF4765BC639F9EC1
+          DBC85F29942EB986FA7F674C12B3F851534DA16D8F586FF945DB3DD176831ACC
+          3970C89D52BED83F6D5E8AAB43DDCAE1D6A767F026F26B965A39CA6E5995925A
+          AA53581D75E78F19DC27561D587966AC491E8D5B1F24672512CD6F445EB20AC4
+          566CDC51CBE8DB70C89D322BE765F45B95627ED4FEAB63EA369EA1790FF93583
+          91C46B9AAEABE394811233D86E33218B2DB257AC97FC8D72B2155577A93B1AD2
+          70D0A18EF8F650DD77C99D4960DD8B99D77B13B6E2C5F1EB5378FE4C7E5B740F
+          ADC894CE32C36FB90D9BE5FB8198A963F1B1389CD1A0AF112678ACBDFCEACCEA
+          370BBAE5CEB07519FC547E87DCC68E4A63AFF99E711DCFD0BC81FCB6B3904E92
+          AA992A278A139ACFCAB3BA7B6CD33D7FFECCF52729CD70CF9D4ED0F3BF85F4B7
+          3849E834CD5F86F405D9D0A72AB634A03EE31996D7975FA9CBBCFFD47D58DD84
+          1A7F8A25B54EC6745F7D50F7A60EB141E52FC963DC736BCA7AE5AE1C1BC5227A
+          4D792AD2BA86F45D145629F38CF10CC7CBCBAFDB7B1B4F1EAA66C9CB85F63F4B
+          5A6CD7743479698A6F18FBCC99BF89FC5EB9AB3B6ACDDAAAEC8F66BB176C3C03
+          F0E21FBC765B8F42B62CF7D6E98F474BFA548E136DE2EB639FB9E7B797DF3777
+          D527328F59B972A22B6F5D9E359E6EBCB6FC0E2BC86350D299EB737BFBDBFD5C
+          BE7E09CE924D1EB19EF237FAE1AF5CB628BF4FEE1ED59B5EB4C2F354AD10B5DB
+          B0E67D0AC90BCB5F77166CCC56B6546A6619E9B832DDCF77A4E3B57CA6F289FD
+          8373FEC7B587A9B4BFCE65F3CD5DD68A69FB269533B7557B2DC2A14F21795DF9
+          9BFCBC2F67AB6206AE892C0CD65FC62ADB03D76FA6BBFC0172973D88BE9ED28C
+          6E7A5E69CC43F529202F2BBF2EA1763F8055FFD46E22BD9FB31195E739768FF5
+          963FCB8DFD1507B13224739A4DFAC60FEEE6B9BB7542BB4757EAD28A2D3F53B8
+          3E85E345E5D789673AF7B5B865B85FD1F27B4B27DDCDCC7844F3D9C078ABD325
+          3688FCD9B3DD6F75AECBC74CB72B15231A0D07A55B9D2173675B977E9BD8BC1E
+          BBF10C05EEF303B6407EC016C80FD802F9015B203F600BE4076C81FC802D901F
+          B005F203B6407EC016C80FD802F9015B203F600BE4076C81FC802D901FB005F2
+          03B6407EC016C80FD802F9015B203F600BE4076C81FC802D901FB005F203B640
+          7EC016C80FD802F9015B203F600BE4076C81FC802D901FB005F203B6FC07441C
+          B868ED6DDC6C0000000049454E44AE426082}
+        ExplicitWidth = 191
+        ExplicitHeight = 76
+      end
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 81
+    Width = 1085
+    Height = 651
+    Align = alClient
+    BevelOuter = bvNone
+    Caption = 'Panel2'
+    ShowCaption = False
+    TabOrder = 1
+    object btnDEVHassegawa: TPanel
+      Left = 0
+      Top = 0
+      Width = 188
+      Height = 651
+      Align = alLeft
+      BevelInner = bvLowered
+      Caption = 'btnDEVHassegawa'
+      Color = clSilver
+      ParentBackground = False
+      ShowCaption = False
+      TabOrder = 0
+      object Button1: TButton
+        Left = 7
+        Top = 557
+        Width = 175
+        Height = 48
+        Caption = 'ENCONTRE O DEV'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI Light'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 4
+        OnClick = Button1Click
+      end
+      object btnCadProdutos: TBitBtn
+        Left = 8
+        Top = 6
+        Width = 174
+        Height = 131
+        Caption = 'Cadastro de Produtos'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI Light'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 0
+        OnClick = btnCadProdutosClick
+      end
+      object btnCadVendas: TBitBtn
+        Left = 8
+        Top = 283
+        Width = 174
+        Height = 131
+        Caption = 'Registro de Vendas'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI Light'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 2
+        OnClick = btnCadVendasClick
+      end
+      object btnListagemVendas: TBitBtn
+        Left = 8
+        Top = 420
+        Width = 174
+        Height = 131
+        Caption = 'Listagem de Vendas'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI Light'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 3
+        OnClick = btnListagemVendasClick
+      end
+      object btnListagemProdutos: TBitBtn
+        Left = 8
+        Top = 145
+        Width = 174
+        Height = 131
+        Caption = 'Listagem de Produtos'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI Light'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 1
+        OnClick = btnListagemVendasClick
+      end
+    end
+    object PanelWorkArea: TPanel
+      Left = 188
+      Top = 0
+      Width = 897
+      Height = 651
+      Align = alClient
+      BevelOuter = bvNone
+      Caption = 'PanelWorkArea'
+      Color = clGray
+      ParentBackground = False
+      ShowCaption = False
+      TabOrder = 1
+      object panelInfo: TPanel
+        Left = 0
+        Top = 592
+        Width = 897
+        Height = 59
+        Align = alBottom
+        Color = clGradientInactiveCaption
+        ParentBackground = False
+        TabOrder = 0
+        object lblDataHora: TLabel
+          Left = 7
+          Top = 6
+          Width = 89
+          Height = 21
+          Caption = 'lblDataHora'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Segoe UI Light'
+          Font.Style = [fsBold, fsItalic]
+          ParentFont = False
+        end
+        object panelDev: TPanel
+          Left = 1
+          Top = 26
+          Width = 895
+          Height = 32
+          Align = alBottom
+          Alignment = taRightJustify
+          BevelOuter = bvNone
+          Caption = 'Rafael Hassegawa - rafaelmch@gmail.com'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Segoe UI Light'
+          Font.Style = [fsBold, fsItalic]
+          ParentFont = False
+          TabOrder = 0
+          object lblUsuario: TLabel
+            Left = 6
+            Top = 4
+            Width = 73
+            Height = 21
+            Caption = 'lblUsuario'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = 'Segoe UI Light'
+            Font.Style = [fsBold, fsItalic]
+            ParentFont = False
+          end
+        end
+      end
+    end
+  end
+  object ActionList1: TActionList
+    Left = 249
+    Top = 25
+    object ActionCadCliente: TAction
+      Caption = 'Cadastro de Cliente'
+    end
+    object ActionCadVenda: TAction
+      Caption = 'Registro de Vendas'
+    end
+    object ActionListarArquivos: TAction
+      Caption = 'Listagem de Arquivos'
+      OnExecute = ActionListarArquivosExecute
+    end
+    object Action1: TAction
+      Caption = 'ActionCadProdutos'
+      OnExecute = ActionCadUsuarioExecute
+    end
+  end
+  object ImageList1: TImageList
+    Left = 328
+    Top = 24
+  end
+  object timerData: TTimer
+    OnTimer = timerDataTimer
+    Left = 416
+    Top = 24
+  end
+  object qConexao: TFDConnection
+    Params.Strings = (
+      'User_Name=sysdba'
+      'Password=masterkey'
+      
+        'Database=C:\Users\SAMSUNG\Documents\Entrevistas\InfoTec\Teste In' +
+        'foTec\InfoTec - Teste Delphi\database\TESTEHASSEGAWA.FDB'
+      'DriverID=IB')
+    Connected = True
+    Left = 496
+    Top = 32
+  end
+end
